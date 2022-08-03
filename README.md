@@ -4,6 +4,7 @@ Run `bundle install`
 Run `yarn install`
 Run `rails db:migrate`
 Run `rails db:seed`
+:rocket:
 
 https://excalidraw.com/#json=ZQT1W__q77b1-IaOoP0Qp,9YRrrdkKHjKCXBORiJx-bQ
 
