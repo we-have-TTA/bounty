@@ -8,44 +8,60 @@
 USE_SEED = true
 if USE_SEED
   p 'use seed'
-  require 'faker'
 
-  fake_net_user = -> (_) {
-    {
-      name: Faker::Internet.unique.username,
-      email: Faker::Internet.unique.email
+  # Create fake User
+  def create_fake_users(n)
+    fake_net_user = -> (_) {
+      {
+        name: Faker::Internet.unique.username,
+        email: Faker::Internet.unique.email
+      }
     }
-  }
-  user_list = Array(10.times).map!(&fake_net_user).each do |user|
-    User.create(user)
+    user_list = Array(n.times).map!(&fake_net_user).each do |user|
+      User.create(user)
+    end
   end
+
+  create_fake_users(10)
+
+  # Create fake Post
   # Faker::Restaurant
   #   method: description, name, review, type
-  fake_post = -> (_) {
-    {
-      title: Faker::Restaurant.unique.name,
-      content: Faker::Restaurant.unique.description
+  def create_fake_posts(n)
+    fake_post = -> (_) {
+      {
+        title: Faker::Restaurant.unique.name,
+        content: Faker::Restaurant.unique.description
+      }
     }
-  }
-  post_list = Array(3.times).map!(&fake_post)
-  User.all.sample(3).each do |user|
-    user.posts.create(post_list.pop)
-  end
-  fake_comment = -> (_) {
-    {
-      content: Faker::Restaurant.unique.review
-    }
-  }
-  comment_list = Array(15.times).map!(&fake_comment)
-  users = User.all
-  user_count = User.count
-  Post.all.cycle.first(comment_list.size).each.with_index do |post, i|
-    comment = Comment.new(comment_list.pop)
-    users[i % user_count].comments << comment
-    post.comments << comment
+    post_list = Array(n.times).map!(&fake_post)
+    User.order(Arel.sql('RANDOM()')).first(n).each do |user|
+      user.posts.create(post_list.pop)
+    end
   end
 
+  create_fake_posts(3)
 
+  # Create fake Comment
+  def create_fake_comments(n)
+    fake_comment = -> (_) {
+      Faker::Restaurant.unique.review
+    }
+    comment_list = Array(n.times).map!(&fake_comment)
+    users = User.all
+    comment_nums = comment_list.size / Post.count
+    Post.all.each do |post|
+      comment_nums.times do
+        Comment.create(
+          user: users.sample,
+          post: post,
+          content: comment_list.pop
+        )
+      end
+    end
+  end
+
+  create_fake_comments(15)
 else
   p 'not use seed'
 end
