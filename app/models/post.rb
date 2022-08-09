@@ -17,4 +17,8 @@ class Post < ApplicationRecord
       user.posts.create(post_list.pop)
     end
   end
+
+  def load_comments
+    Comment.where(post: self).includes(:user).order(id: :desc)
+  end
 end
