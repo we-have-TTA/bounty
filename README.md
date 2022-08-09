@@ -18,6 +18,9 @@ $ rails s
 
 :rocket:
 
+> **Warning**
+> Main branch protection is enabled that you need push on dev then make pull request.
+
 https://excalidraw.com/#json=ZQT1W__q77b1-IaOoP0Qp,9YRrrdkKHjKCXBORiJx-bQ
 
 ### What Things Done
