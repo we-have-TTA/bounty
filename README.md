@@ -1,5 +1,7 @@
 # README
 
+[![CodeFactor](https://www.codefactor.io/repository/github/we-have-tta/bounty/badge)](https://www.codefactor.io/repository/github/we-have-tta/bounty)
+
 https://bounty5x.herokuapp.com/
 
 ## 設定測試環境
