@@ -24,26 +24,29 @@
     <% @posts.each do |post| %>
     <div class="col-8">
       <div class="box border my-3 p-3 rounded-5">
-        <h2 class="border-bottom pb-3"><%= post.title %></h2>
+        <h2 class="border-bottom pb-3">標題：<%= post.title %></h2>
+        <p>內容</p>
         <p>
           <%= post.content %>
         </p>
+        <p><%= local_time(post.created_at) %></p>
         <div class="footer d-flex justify-content-between">
           <div class="reaction-group btn-group">
-            <a href="#" class="btn">comment</a>
-            <a href="#" class="btn">comment</a>
-            <a href="#" class="btn">comment</a>
+            <a href="#" class="btn">Btn1</a>
+            <a href="#" class="btn">Btn2</a>
+            <a href="#" class="btn">Btn3</a>
           </div>
-          <a href="#" class="btn btn-success">comment</a>
+          <a href="#" class="btn btn-success">回應</a>
         </div>
       </div>
     </div>
     <div class="col-8">
-      <% post.comments.each do |comment| %>
+      <% post.comments.each.with_index(1) do |comment, i| %>
       <div class="comment border my-3 px-5 py-3 rounded-5">
-        <h3><%= comment.user.name %></h3>
+        <span>#<%= i %></span>
+        <h3><%= comment.user.name %> <small>says:</small></h3>
         <p><%= comment.content %></p>
-        <small><%= comment.created_at %></small>
+        <small><%= local_time(comment.created_at) %></small>
       </div>
       <% end %>
     </div>
