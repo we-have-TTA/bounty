@@ -3,7 +3,7 @@ class Comment < ApplicationRecord
   belongs_to :post
 
 
-  def self.create_fake_comments(n, options, posts = Post.all)
+  def self.create_fake_comments(n, options = {}, posts = Post.all)
     fake_comment = -> (_) {
       Faker::Restaurant.unique.review
     }

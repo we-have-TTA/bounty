@@ -10,13 +10,13 @@ if USE_SEED
   p 'use seed'
 
   # Create fake User
-  User.create_fake_users(10)
+  User.create_fake_users(5)
 
   # Create fake Post
-  create_fake_posts(3)
+  Post.create_fake_posts(3)
 
   # Create fake Comment
-  create_fake_comments(15)
+  Comment.create_fake_comments(9)
 else
   p 'not use seed'
 end
