@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
   def index
-    @posts = Post.all
+    # TODO reduce sql query
+    @posts = Post.includes(:comments).includes(:user)
   end
 end
