@@ -1,5 +1,9 @@
 # README
 
+https://bounty5x.herokuapp.com/
+
+## 設定測試環境
+
 ```shell
 $ bundle instal
 
