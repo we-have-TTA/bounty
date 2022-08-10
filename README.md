@@ -1,5 +1,7 @@
 # README
 
+[![CodeFactor](https://www.codefactor.io/repository/github/we-have-tta/bounty/badge)](https://www.codefactor.io/repository/github/we-have-tta/bounty)
+
 https://bounty5x.herokuapp.com/
 
 ## 設定測試環境
@@ -17,6 +19,9 @@ $ rails s
 ```
 
 :rocket:
+
+> **Warning**
+> Main branch protection is enabled that you need push on dev then make pull request.
 
 https://excalidraw.com/#json=ZQT1W__q77b1-IaOoP0Qp,9YRrrdkKHjKCXBORiJx-bQ
 
